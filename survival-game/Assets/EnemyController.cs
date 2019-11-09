@@ -43,12 +43,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Player"){
-            PlayerController.dead = true;
-        }
-    }
-
     private bool isPlayerInRange(float range){
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerCustom : MonoBehaviour
 {
     public float speed;
     Rigidbody2D rigidbody;
@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     public static int collectedAmount = 0;
 
     public static bool dead = false;
+
+    private float nextSpawnTime = 0;
+    public GameObject itemPrefab;
+    private bool spawn;
+    private float spawnDelay = 8;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +26,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(shouldSpawn()){
+            spawnItem();
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -30,9 +39,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Enemy"){
-            PlayerController.dead = true;
+            PlayerControllerCustom.dead = true;
             speed = 0;
         }
+    }
+
+    private bool shouldSpawn(){
+        return Time.time >= nextSpawnTime;
+    }
+
+    private void spawnItem(){
+        nextSpawnTime = Time.time + spawnDelay;
+        Instantiate(itemPrefab, new Vector3(Random.Range(0, 20), Random.Range(0, 20), 0), Quaternion.identity);
     }
 
 }

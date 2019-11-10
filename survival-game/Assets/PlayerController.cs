@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool spawn;
     private float coinDelay = 8;
     private float speedDelay = 15;
+    public GameObject speedPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         nextSpeedBoostTime = Time.time + speedDelay;
         if (itemPrefab != null)
-            Instantiate(itemPrefab, new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0), Quaternion.identity);
+            Instantiate(speedPrefab, new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0), Quaternion.identity);
     }
 
     private bool shouldSpawnCoin(){

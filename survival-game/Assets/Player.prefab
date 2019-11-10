@@ -147,6 +147,8 @@ MonoBehaviour:
   speedTime: 0
   itemPrefab: {fileID: 2661849914413983292, guid: 955731eefd78aaa49bb9f2a54b9b6a6f,
     type: 3}
+  speedPrefab: {fileID: 4060555760019854968, guid: 045b938170771044195201985ba8b03a,
+    type: 3}
 --- !u!1 &4587165764116539290
 GameObject:
   m_ObjectHideFlags: 0

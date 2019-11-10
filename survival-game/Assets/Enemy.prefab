@@ -119,6 +119,31 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+
   serializedVersion: 2
   m_Size: {x: 0.29591894, y: 0.60211873}
   m_EdgeRadius: 0
+
+  m_Points:
+    m_Paths:
+    - - {x: 0.045242786, y: 0.027282}
+      - {x: -0.023581505, y: 0.4899881}
+      - {x: -0.40681362, y: -0.28872585}
+      - {x: 0.42943525, y: -0.26610446}
+      - {x: 0.2724166, y: 0.1506679}
+--- !u!114 &4932910594752754696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932910594752754692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818e02ea7d8c2724bb0d278ebc61d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currState: 1
+  range: 7
+  speed: 3
+

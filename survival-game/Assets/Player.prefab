@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 114042649181352732}
   - component: {fileID: 4587165763298525039}
   - component: {fileID: 4587165763298525024}
-  - component: {fileID: 4587165763298525025}
   - component: {fileID: 4587165763298525026}
+  - component: {fileID: 7663698211162883260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,32 +119,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4587165763298525025
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4587165763298525027}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.2066579, y: -0.01314716}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 0.96}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.24547765, y: 0.6248745}
-  m_EdgeRadius: 0
 --- !u!114 &4587165763298525026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +138,49 @@ MonoBehaviour:
     type: 3}
   speedPrefab: {fileID: 4060555760019854968, guid: 045b938170771044195201985ba8b03a,
     type: 3}
+--- !u!60 &7663698211162883260
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587165763298525027}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 0.96}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.1215893, y: -0.2517546}
+      - {x: -0.11992848, y: -0.16659722}
+      - {x: -0.10274041, y: 0.054500304}
+      - {x: -0.10412276, y: 0.09100777}
+      - {x: -0.11994231, y: 0.17051587}
+      - {x: -0.13496053, y: 0.23680522}
+      - {x: -0.14999998, y: 0.27866063}
+      - {x: -0.22792971, y: 0.27628952}
+      - {x: -0.23994625, y: 0.1937866}
+      - {x: -0.3050319, y: 0.16474232}
+      - {x: -0.30463922, y: 0.09133965}
+      - {x: -0.30260456, y: -0.02393913}
+      - {x: -0.32519472, y: -0.3279487}
+      - {x: -0.27623856, y: -0.32577363}
+      - {x: -0.21157992, y: -0.3263904}
+      - {x: -0.16464055, y: -0.32051575}
+      - {x: -0.16169274, y: -0.32340252}
+      - {x: -0.10873711, y: -0.31391823}
 --- !u!1 &4587165764116539290
 GameObject:
   m_ObjectHideFlags: 0

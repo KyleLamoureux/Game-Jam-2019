@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 474218364294209455}
   - component: {fileID: 474218364294209454}
-  - component: {fileID: 474218364294209361}
   - component: {fileID: 474218364294209360}
   - component: {fileID: 474218364294209363}
+  - component: {fileID: 2575626618338850859}
   m_Layer: 0
   m_Name: Kyles Enemy
   m_TagString: Enemy
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 1457005027
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.27227676, g: 0.20825918, b: 0.6792453, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ae44d6ca9dc728943a492226b377d3f4, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82,22 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &474218364294209361
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474218364294209362}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0007406771}
-  serializedVersion: 2
-  m_Radius: 0.08740935
 --- !u!50 &474218364294209360
 Rigidbody2D:
   serializedVersion: 4
@@ -132,6 +116,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currState: 0
-  capSpeed: 5
-  range: 3
-  moveTime: 3
+  capSpeed: 3
+  range: 5
+  moveTime: 100
+  homeX: 0
+  homeY: 0
+--- !u!60 &2575626618338850859
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474218364294209362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 0.96}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.19, y: -0.47}
+      - {x: -0.19630241, y: -0.41764817}
+      - {x: -0.17999999, y: -0.32999998}
+      - {x: -0.17999999, y: -0.31}
+      - {x: -0.19, y: -0.45}
+      - {x: -0.19, y: -0.47}
+      - {x: -0.17999999, y: -0.48}
+      - {x: -0.110788584, y: -0.47986916}
+      - {x: -0.150424, y: -0.20083237}
+      - {x: -0.13375664, y: -0.0561018}
+      - {x: -0.10343003, y: -0.016252518}
+      - {x: -0.15709734, y: 0.018297613}
+      - {x: -0.13086414, y: 0.06616336}
+      - {x: -0.14788818, y: 0.11067468}
+      - {x: -0.19185734, y: 0.11276513}
+      - {x: -0.19898963, y: 0.027056456}
+      - {x: -0.23948765, y: 0.029840946}
+      - {x: -0.321167, y: -0.18519157}
+      - {x: -0.62, y: -0.47}
+      - {x: -0.62, y: -0.48}
+      - {x: -0.5298531, y: -0.47878578}
+      - {x: -0.2820828, y: -0.21438652}
+      - {x: -0.24184537, y: -0.08140504}
+      - {x: -0.28167796, y: -0.47627854}
+      - {x: -0.19, y: -0.48}

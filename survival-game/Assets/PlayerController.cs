@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
-        collectedText.text = "Items collected: " + collectedAmount;
+        collectedText.text = "Score: " + collectedAmount;
 
         
     }

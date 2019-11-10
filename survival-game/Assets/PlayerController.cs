@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Rigidbody2D rigidbody;
     public Text collectedText;
-    public Text3D done;
     public static int collectedAmount = 0;
     public static bool activate = false;
     public int speedTime;
@@ -34,6 +33,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dead = false;
+        collectedAmount = 0;
+        speed = 5;
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("TempEnemy");
+        foreach(GameObject x in enemys)
+        {
+            Destroy(x);
+        };
         speedTime = 0;
         rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -45,6 +52,7 @@ public class PlayerController : MonoBehaviour
         if (dead){
             speed=0;
             ControlScript.timer = 0.0f;
+            Application.LoadLevel(3);
         }
         if(shouldSpawnCoin()){
             spawnCoin();

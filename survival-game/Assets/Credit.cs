@@ -6,6 +6,12 @@ public class Credit : MonoBehaviour
 {
     public bool isTitle;
     public bool isQuit;
+
+    void Start()
+    {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
+    }
+
     void OnMouseUp()
     {
         if (isTitle)

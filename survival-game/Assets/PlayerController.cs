@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Rigidbody2D rigidbody;
     public Text collectedText;
-    public Text3D done;
     public static int collectedAmount = 0;
     public static bool activate = false;
     public int speedTime;

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody;
     public Text collectedText;
     public static int collectedAmount = 0;
+    public static bool activate = false;
     public int speedTime;
 
     public static bool dead = false;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float nextCoinTime = 0;
     public GameObject itemPrefab;
     private bool spawn;
-    private float coinDelay = 8;
+    private float coinDelay = 3;
     private float speedDelay = 15;
     public GameObject speedPrefab;
 
@@ -31,6 +32,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(dead){
+            speed=0;
+        }
         if(shouldSpawnCoin()){
             spawnCoin();
         }
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void spawnSpeedBoost()
     {
         nextSpeedBoostTime = Time.time + speedDelay;
-        if (itemPrefab != null)
+        if (speedPrefab != null)
             Instantiate(speedPrefab, new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0), Quaternion.identity);
     }
 

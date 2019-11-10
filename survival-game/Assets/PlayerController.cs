@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject enemyPrefab;
 
     private bool spawn;
+    private static int enemySpawnLimit = 4;
     private float coinDelay = 1.5f;
     private float speedDelay = 15;
     private float chestDelay = 15;
@@ -140,7 +141,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void spawnEnemy(){
-        if(enemyPrefab!=null)
+        if(enemyPrefab!=null){
             Instantiate(enemyPrefab, new Vector3(Random.Range(-9.4f, -5.0f), 6.6f , 0), Quaternion.identity);
+            enemySpawnLimit--;
+        }
     }
 }

@@ -22,9 +22,9 @@ public class SlowdownBush : MonoBehaviour
         if (player != null)
         {
             player.speed = 2;
-            PlayerController.collectedAmount = PlayerController.collectedAmount + 2;
+            PlayerController.collectedAmount = PlayerController.collectedAmount + 4;
             Destroy(gameObject);
-            player.speedTime = (int)(3 * (1 / Time.deltaTime));
+            player.speedTime = (int)(1.5f * (1 / Time.deltaTime));
         }
     }
 

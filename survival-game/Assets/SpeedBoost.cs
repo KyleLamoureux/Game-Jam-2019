@@ -24,7 +24,7 @@ public class SpeedBoost : MonoBehaviour
         {
             player.speed = 10;
             Destroy(gameObject);
-            PlayerController.collectedAmount = PlayerController.collectedAmount + 2;
+            PlayerController.collectedAmount = PlayerController.collectedAmount + 1;
             player.speedTime = (int) (3 * (1/Time.deltaTime));
         }
     }

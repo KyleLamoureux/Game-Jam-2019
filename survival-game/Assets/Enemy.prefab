@@ -97,7 +97,7 @@ MonoBehaviour:
   moveTimer: 0
   toMoveTo: {x: 0, y: 0, z: 0}
   currState: 1
-  range: 7
+  range: 6
   speed: 3
 --- !u!50 &2737463503364536354
 Rigidbody2D:

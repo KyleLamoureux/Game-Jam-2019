@@ -23,7 +23,7 @@ public class CollectionController : MonoBehaviour
             if(PlayerController.collectedAmount%5 == 0){
                 PlayerController.spawnOnce = true;
             }
-            ControlScript.timer += 2;
+            ControlScript.timer += 2f;
             Destroy(gameObject);
         }
     }

@@ -36,16 +36,24 @@ public class PlayerController : MonoBehaviour
             speed=0;
             ControlScript.timer = 0.0f;
         }
-        if(shouldSpawnCoin()){
+
+        if (speedTime > 0)
+        {
+            speedTime--;
+            if (speedTime == 0)
+                speed = 5;
+        }
+
+        if (shouldSpawnCoin()){
             spawnCoin();
         }
 
-        if (ControlScript.timer <= 0.0f)
-        {
-            PlayerController.dead = true;
-            ControlScript.timer = 0.0f;
-            speed = 0;
-        }
+        //if (ControlScript.timer <= 0.0f)
+        //{
+        //    PlayerController.dead = true;
+        //    ControlScript.timer = 0.0f;
+        //    speed = 0;
+        //}
 
         if (shouldSpawnSpeedBoost())
         {
@@ -57,12 +65,6 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
         collectedText.text = "Items collected: " + collectedAmount;
 
-        if(speedTime > 0)
-        {
-            speedTime--;
-            if (speedTime == 0)
-                speed = 5;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

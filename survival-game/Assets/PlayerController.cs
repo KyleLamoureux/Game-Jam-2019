@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
         speedTime = 0;
         rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -81,9 +82,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
-        collectedText.text = "Items collected: " + collectedAmount;
-        Debug.Log(collectedAmount);
-        
+        collectedText.text = "Score: " + collectedAmount;   
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

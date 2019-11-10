@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 60444204918466246}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: TempEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   moveTimer: 0
   toMoveTo: {x: 0, y: 0, z: 0}
   currState: 1
-  range: 7
+  range: 6
   speed: 3
 --- !u!50 &2737463503364536354
 Rigidbody2D:

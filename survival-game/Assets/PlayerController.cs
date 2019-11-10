@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject enemyPrefab;
 
     private bool spawn;
+    private static int enemySpawnLimit = 4;
     private float coinDelay = 1.5f;
     private float speedDelay = 15;
     private float chestDelay = 15;
@@ -33,6 +34,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dead = false;
+        collectedAmount = 0;
+        speed = 5;
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("TempEnemy");
+        foreach(GameObject x in enemys)
+        {
+            Destroy(x);
+        };
         speedTime = 0;
         rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -44,6 +53,7 @@ public class PlayerController : MonoBehaviour
         if (dead){
             speed=0;
             ControlScript.timer = 0.0f;
+            Application.LoadLevel(3);
         }
         if(shouldSpawnCoin()){
             spawnCoin();
@@ -131,7 +141,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void spawnEnemy(){
-        if(enemyPrefab!=null)
+        if(enemyPrefab!=null){
             Instantiate(enemyPrefab, new Vector3(Random.Range(-9.4f, -5.0f), 6.6f , 0), Quaternion.identity);
+            enemySpawnLimit--;
+        }
     }
 }

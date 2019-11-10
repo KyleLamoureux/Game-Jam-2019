@@ -21,7 +21,7 @@ public class SlowdownBush : MonoBehaviour
         PlayerController player = collider.GetComponent<PlayerController>();
         if (player != null)
         {
-            player.speed = 0;
+            player.speed = 2;
             Destroy(gameObject);
             player.speedTime = (int)(3 * (1 / Time.deltaTime));
         }

@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currState: 1
-  range: 10
-  speed: 2
+  range: 7
+  speed: 3

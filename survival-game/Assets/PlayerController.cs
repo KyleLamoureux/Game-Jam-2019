@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public int speedTime;
 
     public static bool dead = false;
+    public static bool spawnOnce = false;
 
     private float nextSpeedBoostTime = 0;
     private float nextCoinTime = 0;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject itemPrefab;
     public GameObject speedPrefab;
     public GameObject chestPrefab;
+    public GameObject enemyPrefab;
 
     private bool spawn;
     private float coinDelay = 1.5f;
@@ -71,13 +73,16 @@ public class PlayerController : MonoBehaviour
             spawnSlowChest();
         }
 
+        if(spawnOnce){
+            spawnEnemy();
+            spawnOnce = false;
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
-        collectedText.text = "Score: " + collectedAmount;
-
-        
+        collectedText.text = "Score: " + collectedAmount;   
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -122,5 +127,10 @@ public class PlayerController : MonoBehaviour
         nextCoinTime = Time.time + coinDelay;
         if(itemPrefab!=null)
             Instantiate(itemPrefab, new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0), Quaternion.identity);
+    }
+
+    private void spawnEnemy(){
+        if(enemyPrefab!=null)
+            Instantiate(enemyPrefab, new Vector3(Random.Range(-9.4f, -5.0f), 6.6f , 0), Quaternion.identity);
     }
 }

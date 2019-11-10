@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public GameObject chestPrefab;
 
     private bool spawn;
-    private float coinDelay = 3;
+    private float coinDelay = 1.5f;
     private float speedDelay = 15;
     private float chestDelay = 15;
     

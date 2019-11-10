@@ -16,11 +16,17 @@ public class PlayerController : MonoBehaviour
 
     private float nextSpeedBoostTime = 0;
     private float nextCoinTime = 0;
+    private float nextSlowChest = 0;
+
     public GameObject itemPrefab;
+    public GameObject speedPrefab;
+    public GameObject chestPrefab;
+
     private bool spawn;
     private float coinDelay = 3;
     private float speedDelay = 15;
-    public GameObject speedPrefab;
+    private float chestDelay = 15;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +42,9 @@ public class PlayerController : MonoBehaviour
             speed=0;
             ControlScript.timer = 0.0f;
         }
+        if(shouldSpawnCoin()){
+            spawnCoin();
+        }
 
         if (speedTime > 0)
         {
@@ -44,27 +53,30 @@ public class PlayerController : MonoBehaviour
                 speed = 5;
         }
 
-        if (shouldSpawnCoin()){
-            spawnCoin();
+        if (ControlScript.timer <= 0.0f)
+        {
+            PlayerController.dead = true;
+            ControlScript.timer = 0.0f;
+            speed = 0;
         }
-
-        //if (ControlScript.timer <= 0.0f)
-        //{
-        //    PlayerController.dead = true;
-        //    ControlScript.timer = 0.0f;
-        //    speed = 0;
-        //}
 
         if (shouldSpawnSpeedBoost())
         {
             spawnSpeedBoost();
         }
+
+        if(shouldSpawnSlowChest())
+        {
+            spawnSlowChest();
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
         collectedText.text = "Items collected: " + collectedAmount;
 
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -81,15 +93,28 @@ public class PlayerController : MonoBehaviour
         return Time.time >= nextSpeedBoostTime;
     }
 
+    private bool shouldSpawnSlowChest()
+    {
+        return Time.time >= nextSlowChest;
+    }
+
+    private bool shouldSpawnCoin()
+    {
+        return Time.time >= nextCoinTime;
+    }
+
+    private void spawnSlowChest()
+    {
+        nextSlowChest = Time.time + chestDelay;
+        if (chestPrefab != null)
+            Instantiate(chestPrefab, new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0), Quaternion.identity);
+    }
+
     private void spawnSpeedBoost()
     {
         nextSpeedBoostTime = Time.time + speedDelay;
         if (speedPrefab != null)
             Instantiate(speedPrefab, new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0), Quaternion.identity);
-    }
-
-    private bool shouldSpawnCoin(){
-        return Time.time >= nextCoinTime;
     }
 
     private void spawnCoin(){

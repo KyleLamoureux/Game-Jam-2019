@@ -20,10 +20,10 @@ public class CollectionController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player"){
             PlayerController.collectedAmount++;
-            if(PlayerController.collectedAmount%2 == 10){
+            if(PlayerController.collectedAmount%5 == 0){
                 PlayerController.spawnOnce = true;
             }
-            ControlScript.timer += 5;
+            ControlScript.timer += 2;
             Destroy(gameObject);
         }
     }

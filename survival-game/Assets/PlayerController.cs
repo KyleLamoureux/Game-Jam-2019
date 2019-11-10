@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float nextCoinTime = 0;
     public GameObject itemPrefab;
     private bool spawn;
-    private float coinDelay = 3;
+    private float coinDelay = 1.5f;
     private float speedDelay = 15;
     public GameObject speedPrefab;
 

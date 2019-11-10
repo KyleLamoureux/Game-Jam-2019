@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum EnemyState2{
     Sentry,
+    Return,
     Follow
 };
 public class DarkPurpleAI : MonoBehaviour
@@ -17,25 +18,27 @@ public class DarkPurpleAI : MonoBehaviour
     public float moveTime;
     private float move;
 
+    public float homeX;
+    public float homeY;
+    private Vector2 homeVector;
+
     GameObject player;
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        homeVector = new Vector3(homeX, homeY, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(move);
-        if(move > 0)
-        {
-            move--;
-            if (move <= 0){
-                speed = 0;
-                currState = EnemyState2.Sentry;
-            }
+        Debug.Log(currState);
+
+        if(currState == EnemyState2.Return && isHome()){
+            currState = EnemyState2.Sentry;
+            //speed = 0;
         }
         switch(currState){
             case(EnemyState2.Sentry):
@@ -48,9 +51,25 @@ public class DarkPurpleAI : MonoBehaviour
                     speed = 6;
                 }
                 follow();
+                move--;
+                if (move <= 0){
+                    currState = EnemyState2.Return;
+                }
+                break;
+            case(EnemyState2.Return):
+                returnHome();
                 break;
         }
 
+    }
+
+    public bool isHome(){
+        Debug.Log(Vector3.Distance(transform.position, homeVector));
+        return Vector3.Distance(transform.position, homeVector) <= .2f;
+    }
+
+    public void returnHome(){
+        transform.position = Vector2.MoveTowards(transform.position, homeVector, speed * Time.deltaTime);
     }
 
     public void sentry(){

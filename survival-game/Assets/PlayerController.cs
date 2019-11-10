@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Rigidbody2D rigidbody;
     public Text collectedText;
+    public Text3D done;
     public static int collectedAmount = 0;
     public static bool activate = false;
     public int speedTime;
@@ -33,7 +34,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
         speedTime = 0;
         rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(dead){
+
+        if (dead){
             speed=0;
             ControlScript.timer = 0.0f;
         }
@@ -82,7 +83,8 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
-        collectedText.text = "Score: " + collectedAmount;   
+        collectedText.text = "Score: " + collectedAmount;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

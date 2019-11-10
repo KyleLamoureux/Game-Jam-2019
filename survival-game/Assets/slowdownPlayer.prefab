@@ -10,12 +10,7 @@ PrefabInstance:
     - target: {fileID: 4587165763298525027, guid: 9f2722cd8ddff984a82d942de81d7b58,
         type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114042649181352732, guid: 9f2722cd8ddff984a82d942de81d7b58,
-        type: 3}
-      propertyPath: uiText
-      value: 
+      value: slowdownPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 4587165763298525038, guid: 9f2722cd8ddff984a82d942de81d7b58,
         type: 3}
@@ -72,10 +67,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114042649181352732, guid: 9f2722cd8ddff984a82d942de81d7b58,
+        type: 3}
+      propertyPath: uiText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4587165763298525026, guid: 9f2722cd8ddff984a82d942de81d7b58,
         type: 3}
       propertyPath: chestPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2828602419132745593, guid: 20a5c5a622f211f45af6b2a9bd2463ee,
+        type: 3}
+    - target: {fileID: 4587165763298525026, guid: 9f2722cd8ddff984a82d942de81d7b58,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 4932910594752754692, guid: a5d30ad85d055e44fbb4eb67df0a9b50,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f2722cd8ddff984a82d942de81d7b58, type: 3}

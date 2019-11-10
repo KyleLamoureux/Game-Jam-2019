@@ -34,11 +34,20 @@ public class PlayerController : MonoBehaviour
     {
         if(dead){
             speed=0;
+            ControlScript.timer = 0.0f;
         }
         if(shouldSpawnCoin()){
             spawnCoin();
         }
-        if(shouldSpawnSpeedBoost())
+
+        if (ControlScript.timer <= 0.0f)
+        {
+            PlayerController.dead = true;
+            ControlScript.timer = 0.0f;
+            speed = 0;
+        }
+
+        if (shouldSpawnSpeedBoost())
         {
             spawnSpeedBoost();
         }
@@ -59,8 +68,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Enemy"){
             PlayerController.dead = true;
+            ControlScript.timer = 0.0f;
             speed = 0;
         }
+
     }
 
     private bool shouldSpawnSpeedBoost()

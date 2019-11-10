@@ -27,6 +27,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(PlayerController.dead == true)
+        {
+            speed = 0;
+        }
         switch(currState){
             case(EnemyState.Wander):
                 wander();

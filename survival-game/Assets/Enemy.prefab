@@ -95,6 +95,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currState: 1
+  prevX: 0
+  prevY: 0
+  movingX: 0
+  movingY: 0
   range: 7
   speed: 3
 --- !u!61 &1367141395961762539
@@ -143,4 +147,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

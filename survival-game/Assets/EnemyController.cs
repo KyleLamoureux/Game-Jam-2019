@@ -9,27 +9,19 @@ public enum EnemyState{
 
 public class EnemyController : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public int moveTimer;
+    public Vector3 toMoveTo;
     GameObject player;
     public EnemyState currState = EnemyState.Wander;
-    public float prevX;
-    public float prevY;
-    public bool movingX;
-    public bool movingY;
 
     public float range;
     public float speed;
-    private bool chooseDir = false;
-    private Vector3 randomDir;
-    private int gtfoTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        gtfoTimer = 0;
-        prevX = gameObject.transform.position.x;
-        prevY = gameObject.transform.position.y;
-        rb = GetComponent<Rigidbody2D>();
+        moveTimer = 0;
+        toMoveTo = new Vector3(0, 0, 0);
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -49,55 +41,18 @@ public class EnemyController : MonoBehaviour
                 break;
         }
 
-        float newX = gameObject.transform.position.x;
-        float newY = gameObject.transform.position.y;
-
-        rb.velocity = new Vector3((prevX - newX) * speed, (prevY - newY) * speed, 0);
-
-        Debug.Log(gtfoTimer);
-        if (gtfoTimer == 0)
+        if (isPlayerInRange(range))
         {
-            switch (currState)
-            {
-                case (EnemyState.Wander):
-                    wander();
-                    break;
-                case (EnemyState.Follow):
-                    follow();
-                    break;
-            }
-
-            if (isPlayerInRange(range))
-            {
-                currState = EnemyState.Follow;
-            }
-            else
-            {
-                currState = EnemyState.Wander;
-            }
-
-            if (Vector2.Distance(transform.position, player.transform.position) <= 0.5f)
-            {
-                PlayerController.dead = true;
-            }
-
-            if (!checkInBounds(transform))
-            {
-                changeDirection();
-            }
-            prevX = newX;
-            prevY = newY;
-        }
-        else if (isPlayerInRange(range)) {
-            gtfoTimer = 0;
             currState = EnemyState.Follow;
-            follow();
         }
         else
         {
-            currState = EnemyState.Follow;
-            follow();
-            gtfoTimer--;
+            currState = EnemyState.Wander;
+        }
+
+        if (Vector2.Distance(transform.position, player.transform.position) <= 0.5f)
+        {
+           PlayerController.dead = true;
         }
     }
 
@@ -112,32 +67,15 @@ public class EnemyController : MonoBehaviour
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
-    private IEnumerator ChooseDirection(){
-        chooseDir = true;
-        yield return new WaitForSeconds(Random.Range(2f, 8f));
-        changeDirection();
-        chooseDir = false;
-    }
-
-    private void changeDirection(){
-        //Debug.Log("Hit something with a velocity: " + GetComponent<Rigidbody2D>().velocity);
-
-       // rb.velocity = new Vector3(-rb.velocity.x, -rb.velocity.y, 0);
-
-
-        /*
-        randomDir = new Vector3(0, 0, Random.Range(0, 360));
-        Quaternion nextRotation = Quaternion.Euler(randomDir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Random.Range(0.5f, 2.5f));
-        */
-        
-    }
-
     void wander(){
-        if(!chooseDir){
-            StartCoroutine(ChooseDirection());
+        if (moveTimer == 0)
+        {
+            toMoveTo = new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0);
+            moveTimer = (int) (Random.Range(1, 5) * (1/Time.deltaTime));
         }
-        transform.position += -transform.right * speed * Time.deltaTime;
+        else
+            moveTimer--;
+        transform.position = Vector2.MoveTowards(transform.position, toMoveTo, speed * Time.deltaTime);
         if(isPlayerInRange(range)){
             currState = EnemyState.Follow;
         }
@@ -149,7 +87,9 @@ public class EnemyController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Wall")
-            gtfoTimer = (int) (5 * (1 / Time.deltaTime));
+        if (collision.tag == "Wall")
+        {
+            toMoveTo = new Vector3(Random.Range(-10f, 12f), Random.Range(-7.5f, 10f), 0);
+        }
     }
 }
